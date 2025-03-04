@@ -5,19 +5,24 @@ import org.springframework.stereotype.Component;
 
 import guru.springframework.spring6webapp.domain.Author;
 import guru.springframework.spring6webapp.domain.Book;
+import guru.springframework.spring6webapp.domain.Publisher;
 import guru.springframework.spring6webapp.repositories.AuthorRepository;
 import guru.springframework.spring6webapp.repositories.BookRepository;
+import guru.springframework.spring6webapp.repositories.PublisherRepository;
 
 @Component
 public class BootstrapData implements CommandLineRunner {
 
   private final AuthorRepository authorRepository;
   private final BookRepository bookRepository;
+  private final PublisherRepository publisherRepository;
 
-  public BootstrapData(AuthorRepository authorRepository, BookRepository bookRepository) {
+  public BootstrapData(AuthorRepository authorRepository, BookRepository bookRepository,
+      PublisherRepository publisherRepository) {
     super();
     this.authorRepository = authorRepository;
     this.bookRepository = bookRepository;
+    this.publisherRepository = publisherRepository;
   }
 
   @Override
@@ -54,6 +59,13 @@ public class BootstrapData implements CommandLineRunner {
     System.out.println("In Bootstrap");
     System.out.println("Author Count:" + authorRepository.count());
     System.out.println("Book Count:" + bookRepository.count());
+
+    Publisher pub = new Publisher();
+    pub.setPublisherName("Harsh");
+    pub.setState("Gujarat");
+
+    publisherRepository.save(pub);
+    System.out.println("Publisher Count: " + publisherRepository.count());
   }
 
 }
