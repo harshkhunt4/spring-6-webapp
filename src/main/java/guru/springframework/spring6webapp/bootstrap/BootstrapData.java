@@ -39,8 +39,8 @@ public class BootstrapData implements CommandLineRunner {
     eric.setLastname("Johnson");
 
     Book noEJB = new Book();
-    ddd.setTitle("J2EE Development without EJB");
-    ddd.setIsbn("547547566");
+    noEJB.setTitle("J2EE Development without EJB");
+    noEJB.setIsbn("547547566");
 
     Author rodSaved = authorRepository.save(rod);
     Book noEJBSaved = bookRepository.save(noEJB);
